@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Admin Panel - Panel Beating Company</title>
+</head>
+<body>
+
+    <%- include('./layouts/header') %>
+
+    <h1>Admin Panel</h1>
+    <form action="/admin/upload" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="beforeImage">Before Image:</label>
+            <input type="file" name="beforeImage" required>
+        </div>
+        <div>
+            <label for="afterImage">After Image:</label>
+            <input type="file" name="afterImage" required>
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea name="description" required></textarea>
+        </div>
+        <button type="submit">Upload</button>
+    </form>
+
+    <!-- views/partials/footer.ejs -->
+    <%- include('./layouts/footer') %>
+
+</body>
+</html>

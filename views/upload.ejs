@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Upload Testimonial</title>
+</head>
+<body>
+    <h1>Upload Testimonial</h1>
+    <form action="/testimonials/upload" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="beforeImage">Before Image:</label>
+            <input type="file" name="beforeImage" required>
+        </div>
+        <div>
+            <label for="afterImage">After Image:</label>
+            <input type="file" name="afterImage" required>
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea name="description" required></textarea>
+        </div>
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

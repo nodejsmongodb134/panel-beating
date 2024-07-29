@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Forgot Password - Panel Beating Company</title>
+</head>
+<body>
+
+    <%- include('./layouts/header') %>
+
+    <h1>Forgot Password</h1>
+    <form action="/forgot" method="POST">
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" required>
+        </div>
+        <button type="submit">Send Reset Link</button>
+    </form>
+    <% if (message.length > 0) { %>
+        <p><%= message %></p>
+    <% } %>
+
+    <!-- views/partials/footer.ejs -->
+    <%- include('./layouts/footer') %>
+
+</body>
+</html>
