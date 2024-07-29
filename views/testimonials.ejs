@@ -8,19 +8,28 @@
 
     <%- include('./layouts/header') %>
 
-    <h1>Testimonials</h1>
-    <!--<a href="/testimonials/upload">Upload New Testimonial</a> -->
-    <div>
-        <% testimonials.forEach(testimonial => { %>
-            <div>
-                <h2><%= testimonial.description %></h2>
-                <p>Before:</p>
-                <img src="/uploads/<%= testimonial.beforeImage %>" alt="Before Image">
-                <p>After:</p>
-                <img src="/uploads/<%= testimonial.afterImage %>" alt="After Image">
-            </div>
-        <% }) %>
-    </div>
+    <main>
+        <h2>Testimonials</h2>
+        <div class="image-comparison">
+            <% testimonials.forEach(testimonial => { %>
+                <div class="image-container">
+                    <div class="image-pair">
+                        <div>
+                            <h3>Before</h3>
+                            <img src="/uploads/<%= testimonial.beforeImage %>" alt="Before Image">
+                        </div>
+                        <div>
+                            <h3>After</h3>
+                            <img src="/uploads/<%= testimonial.afterImage %>" alt="After Image">
+                        </div>
+                    </div>
+                    <div class="image-description">
+                        <p><%= testimonial.description %></p>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </main>
 
      <!-- views/partials/footer.ejs -->
      <%- include('./layouts/footer') %>
