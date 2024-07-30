@@ -13,36 +13,77 @@ body {
     min-height: 100vh;
 }
 
-/******************* Header styling ****************************/
+/******************* Header-Navbar ****************************/
 
-header {
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
     background-color: #333;
     color: white;
-    padding: 1em 0;
+    position: relative; /* Add this to position the dropdown correctly */
 }
 
-header h1 {
-    text-align: center;
-    margin-bottom: 0.5em;
-}
-
-header nav {
-    text-align: center;
-    margin-bottom: 1em;
-}
-
-header nav a {
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
     color: white;
     text-decoration: none;
-    margin: 0 1em;
-    padding: 0.5em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1em;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5em 1em;
     transition: background-color 0.3s;
 }
 
-header nav a:hover {
+.nav-links a:hover {
     background-color: #555;
     border-radius: 5px;
 }
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: white;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%; /* Position the dropdown right below the navbar */
+        left: 0;
+        background-color: #333;
+        z-index: 1000; /* Ensure the dropdown is above other elements */
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 1em;
+        border-top: 1px solid #444;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
 
 
 /******************* Delete, Logout  **************************/
@@ -180,7 +221,7 @@ form textarea {
 form button {
     padding: 0.5em 1em;
     color: white;
-    background-color: #333;
+    background-color: #ff0000;
     border: none;
     border-radius: 5px;
     cursor: pointer;
