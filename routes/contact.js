@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
 
     const mailOptions = {
         from: email,
-        to: 'your-email@gmail.com', // Replace with the email address you want to receive messages
+        to: 'nodejsmongodb12@gmail.com', // Replace with the email address you want to receive messages
         subject: `Contact form submission from ${name}`,
         text: message
     };

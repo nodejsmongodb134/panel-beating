@@ -43,14 +43,67 @@ header nav a:hover {
     border-radius: 5px;
 }
 
-/* Footer styling */
+/* Footer styling 
 footer {
     background-color: #333;
     color: white;
     text-align: center;
     padding: 1em 0;
-    margin-top: auto; /* Push footer to the bottom */
+    margin-top: auto; /* Push footer to the bottom 
 }
+*/
+
+
+/***************** Footer styles ****************************/
+
+.footer-container {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.social-links {
+    display: flex;
+    gap: 1em;
+}
+
+.social-icon {
+    color: white;
+    font-size: 1.5em;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #ff9c00; /* Change to your accent color */
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Main content styling */
 main {
