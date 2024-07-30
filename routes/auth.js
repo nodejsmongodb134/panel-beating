@@ -31,13 +31,14 @@ router.post('/login', passport.authenticate('local', {
     failureFlash: true
 }));
 
-// Logout
+// Logout route
 router.get('/logout', (req, res) => {
-    req.logout((err) => {
+    req.logout(err => {
         if (err) {
             return next(err);
         }
-        res.redirect('/');
+        req.flash('success_msg', 'You have logged out');
+        res.redirect('/auth/login');
     });
 });
 

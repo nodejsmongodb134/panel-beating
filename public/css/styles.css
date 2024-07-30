@@ -6,14 +6,15 @@ body, h1, h2, p, form, div, input, textarea, button, nav, header, footer, main {
     font-family: Arial, sans-serif;
 }
 
-/* Overall page styling */
+/******************** Overall page styling **********************/
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Header styling */
+/******************* Header styling ****************************/
+
 header {
     background-color: #333;
     color: white;
@@ -43,15 +44,49 @@ header nav a:hover {
     border-radius: 5px;
 }
 
-/* Footer styling 
-footer {
+
+/******************* Delete, Logout  **************************/
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.logout-button {
     background-color: #333;
     color: white;
-    text-align: center;
-    padding: 1em 0;
-    margin-top: auto; /* Push footer to the bottom 
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
 }
-*/
+
+.logout-button:hover {
+    background-color: #555;
+}
+
+
+/****************** Admin Delete Buttom *********************/
+
+.delete-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #e60000;
+}
+
+
+
 
 
 /***************** Footer styles ****************************/

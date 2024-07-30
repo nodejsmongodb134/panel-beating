@@ -3,8 +3,15 @@
 <body>
 
     <%- include('./layouts/header') %>
+    <Br>
 
-    <h1>Admin Panel</h1>
+  <main>
+
+    <div class="admin-header">
+        <h2>Admin Panel</h2>
+        <a href="/auth/logout" class="logout-button">Logout</a>
+    </div>
+
     <form action="/admin/upload" method="POST" enctype="multipart/form-data">
         <div>
             <label for="beforeImage">Before Image:</label>
@@ -21,7 +28,32 @@
         <button type="submit">Upload</button>
     </form>
 
-    <!-- views/partials/footer.ejs -->
+    <h2>Uploaded Testimonials</h2>
+    <div class="image-comparison">
+        <% testimonials.forEach(testimonial => { %>
+            <div class="image-container">
+                <div class="image-pair">
+                    <div>
+                        <h3>Before</h3>
+                        <img src="/uploads/<%= testimonial.beforeImage %>" alt="Before Image">
+                    </div>
+                    <div>
+                        <h3>After</h3>
+                        <img src="/uploads/<%= testimonial.afterImage %>" alt="After Image">
+                    </div>
+                </div>
+                <div class="image-description">
+                    <p><%= testimonial.description %></p>
+                </div>
+                <form action="/admin/delete/<%= testimonial._id %>" method="POST">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </div>
+        <% }) %>
+    </div>
+</main>
+
+    <Br>
     <%- include('./layouts/footer') %>
 
 </body>
