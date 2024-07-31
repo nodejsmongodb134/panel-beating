@@ -4,23 +4,18 @@ const fs = require('fs');
 const path = require('path');
 const router = express.Router();
 const Testimonial = require('../models/testimonial');
+const adminMiddleware = require('../middleware/admin');
 
-function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/auth/login');
-}
 
 module.exports = (upload) => {
     // Admin panel main page
-    router.get('/', ensureAuthenticated, async (req, res) => {
+    router.get('/', adminMiddleware, async (req, res) => {
         const testimonials = await Testimonial.find();
         res.render('admin', { testimonials });
     });
 
     // Handle testimonial upload
-    router.post('/upload', ensureAuthenticated, upload.fields([{ name: 'beforeImage' }, { name: 'afterImage' }]), async (req, res) => {
+    router.post('/upload', adminMiddleware, upload.fields([{ name: 'beforeImage' }, { name: 'afterImage' }]), async (req, res) => {
         const { description } = req.body;
         const beforeImage = req.files.beforeImage[0].filename;
         const afterImage = req.files.afterImage[0].filename;
@@ -36,7 +31,7 @@ module.exports = (upload) => {
     });
 
     // Handle testimonial deletion
-    router.post('/delete/:id', ensureAuthenticated, async (req, res) => {
+    router.post('/delete/:id', adminMiddleware, async (req, res) => {
         const { id } = req.params;
         const testimonial = await Testimonial.findById(id);
 

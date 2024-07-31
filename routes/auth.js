@@ -12,10 +12,16 @@ router.get('/register', (req, res) => {
 router.post('/register', async (req, res) => {
     const { email, password } = req.body;
     try {
-        const user = new User({ email, password });
-        await user.save();
+        const existingAdmin = await User.findOne({ isAdmin: true });
+        const isAdmin = !existingAdmin; // First registered user is the admin
+        
+        const newUser = new User({ email, password, isAdmin });
+        await newUser.save();
+        
+        req.flash('success', 'Registration successful. Please log in.');
         res.redirect('/auth/login');
-    } catch (err) {
+    } catch (error) {
+        req.flash('error', 'Error registering user.');
         res.redirect('/auth/register');
     }
 });
