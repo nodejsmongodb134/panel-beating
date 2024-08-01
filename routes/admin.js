@@ -30,6 +30,24 @@ module.exports = (upload) => {
         res.redirect('/admin');
     });
 
+    // Handle update description 
+    
+    router.post('/update/:id', adminMiddleware, async (req, res) => {
+        const { id } = req.params;
+        const { description } = req.body;
+        const testimonial = await Testimonial.findById(id);
+    
+        if (testimonial) {
+            testimonial.description = description;
+            await testimonial.save();
+            req.flash('success', 'Testimonial description updated successfully.');
+        } else {
+            req.flash('error', 'Testimonial not found.');
+        }
+    
+        res.redirect('/admin');
+    });
+
     // Handle testimonial deletion
     router.post('/delete/:id', adminMiddleware, async (req, res) => {
         const { id } = req.params;

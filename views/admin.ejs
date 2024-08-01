@@ -29,27 +29,29 @@
     </form>
 
     <h2>Uploaded Testimonials</h2>
-    <div class="image-comparison">
+    <div class="testimonials-container">
         <% testimonials.forEach(testimonial => { %>
-            <div class="image-container">
-                <div class="image-pair">
+            <div class="testimonial-item">
+                <form action="/admin/update/<%= testimonial._id %>" method="POST">
                     <div>
-                        <h3>Before</h3>
-                        <img src="/uploads/<%= testimonial.beforeImage %>" alt="Before Image">
+                        <label for="description">Description</label>
+                        <textarea name="description"><%= testimonial.description %></textarea>
                     </div>
-                    <div>
-                        <h3>After</h3>
-                        <img src="/uploads/<%= testimonial.afterImage %>" alt="After Image">
-                    </div>
-                </div>
-                <div class="image-description">
-                    <p><%= testimonial.description %></p>
-                </div>
-                <form action="/admin/delete/<%= testimonial._id %>" method="POST">
-                    <button type="submit" class="delete-button">Delete</button>
+                    <button type="submit">Update Description</button>
                 </form>
+                <form action="/admin/delete/<%= testimonial._id %>" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+                <div>
+                    <h3>Before</h3>
+                    <img src="<%= testimonial.beforeImage.replace('public', '') %>" alt="Before Image">
+                </div>
+                <div>
+                    <h3>After</h3>
+                    <img src="<%= testimonial.afterImage.replace('public', '') %>" alt="After Image">
+                </div>
             </div>
-        <% }) %>
+        <% }); %>
     </div>
 </main>
 
